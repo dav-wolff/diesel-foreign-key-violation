@@ -1,0 +1,12 @@
+CREATE TABLE parent (
+	id BigInt PRIMARY KEY NOT NULL
+);
+
+CREATE TABLE child (
+	id BigInt PRIMARY KEY NOT NULL,
+	parent_id BigInt NOT NULL,
+	FOREIGN KEY(parent_id) REFERENCES parent ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+INSERT INTO parent (id) VALUES (1);
+INSERT INTO child (id, parent_id) VALUES (1, 1);
